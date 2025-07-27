@@ -19,6 +19,10 @@ def pull_AI():
     for i in can_take :
         if stick - i in lose_number and i >= 1:
             ai_pull = i
+        elif max_stick == 2 and stick in lose_number :
+            ai_pull = 1
+
+
     stick = stick - ai_pull
     ai_pullstick = print("I pull",ai_pull,"sticks. There are ",stick," sticks in the pile.")
 
@@ -44,9 +48,14 @@ def f(Pile_stick,Pick_stick,t_time) :
         pull_AI()
     return stick,time,f
 
+
 #Number of stick that can pick
+while max_stick < 2 :
+    print("The number of stick which can pick too low.Please try again.")
+    max_stick = int(input("How many stick can take in 1 time ? : "))
+
 for i in range(1,max_stick+1):
-    can_take.append(i)
+        can_take.append(i)
 
 #Checking number that posible to pick and lose
 for l_stick in range(1,stick,max_stick+1) :
